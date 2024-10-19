@@ -6,7 +6,9 @@
     <title>Snake Game</title>
     <script src="script.js" defer></script>
 </head>
-<body>
+<body ontouchstart="touchstart(event)"
+      ontouchmove="touchmove(event)"
+      ontouchend="touchend(event)">
     <div class="wrapper">
         <div class="heading">
             <span class="caption">--Snake Game--:></span>
@@ -22,12 +24,29 @@
             <i data-key="ArrowDown" class="s">&#8595;</i>
             <i data-key="ArrowRight" class="s">&#8594;</i>
         </div>
-        <div class="touch-controls">
-            <button id="left">←</button>
-            <button id="up">↑</button>
-            <button id="down">↓</button>
-            <button id="right">→</button>
-        </div>
     </div>
+<script>
+    var startingX,startingY,movingX,movingY;
+    var direction = "null";
+    function touchstart(ent){
+        startingX = ent.touches[0].clientX;
+        startingY = ent.touches[0].clientY;
+    }function touchmove(ent){
+        movingX = ent.touches[0].clientX;
+        movingY = ent.touches[0].clientY;
+    }
+    function touchend(ent){
+        if(startingX+100<movingX){
+           swipechange("right");
+        }else if(startingX-100>movingX){
+            swipechange("left");
+        }
+        else if(startingY+100<movingY){
+            swipechange("down");
+        }else if(startingY-100>movingY){
+            swipechange("up");
+        }
+    }
+</script>
 </body>
 </html>
