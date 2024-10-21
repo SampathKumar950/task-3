@@ -1,30 +1,27 @@
-body {
+
+body{
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 100vh;
     background: white;
 }
-
-.wrapper {
+.container{
     width: 65vmin;
     height: 70vmin;
     background-color: black;
-    position: relative; /* Allows positioning of touch controls */
 }
-
-.heading {
+/* title */
+.heading{
     display: flex;
     align-items: center;
     justify-content: center;
 }
-
-.caption {
+.caption{
     color: white;
     font-size: 2rem;
 }
-
-.game-details {
+/* Scores */
+.game-details{
     color: rgb(216, 232, 247);
     font-size: 1.2rem;
     font-weight: 500;
@@ -32,70 +29,34 @@ body {
     display: flex;
     justify-content: space-between;
 }
-
-.play-board {
+/* play-board */
+.play-board{
     width: 100%;
     height: 100%;
     display: grid;
-    grid-template: repeat(30, 1fr) / repeat(30, 1fr);
+    grid-template: repeat(30, 1fr) / repeat(30,1fr);
     background: #212837;
 }
-
-.play-board .food {
+/* food */
+.play-board .food{
     background: red;
 }
-
-.play-board .head {
+.play-board .head{
+    border-radius: 10px;
     background: rgb(0, 255, 76);
 }
-
-.controls {
+/* Arrow-Controls */
+.controls{
     display: flex;
     justify-content: space-between;
 }
-
 .controls i {
-    padding: 25px 0;
-    color: rgb(255, 255, 255);
-    text-align: center;
-    cursor: pointer;
-    font-size: 1.3rem;
-    width: calc(100% / 4);
-    border-right: 1px solid rgb(255, 255, 255);
-    background: black;
-}
-
-.touch-controls {
-    display: none; /* Hidden by default */
-    justify-content: center;
-    margin-top: 10px;
-    position: absolute; /* Positioning for mobile */
-    bottom: 10px; /* Adjust based on your layout */
-    left: 50%;
-    transform: translateX(-50%); /* Centering the buttons */
-}
-
-.touch-controls button {
-    padding: 15px;
-    margin: 5px;
-    font-size: 24px;
-    background: #333;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.touch-controls button:hover {
-    background: #555; /* Hover effect */
-}
-
-@media (max-width: 600px) {
-    .controls {
-        display: none; /* Hide keyboard controls on small screens */
-    }
-
-    .touch-controls {
-        display: flex; /* Show touch controls on mobile */
-    }
+padding: 25px 0;
+color: rgb(255, 255, 255);
+text-align: center;
+cursor: pointer;
+font-size: 1.3rem;
+width: calc(100% / 4);
+border-right: 1px solid rgb(255, 255, 255);
+background: black;
 }
