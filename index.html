@@ -9,7 +9,7 @@
 <body ontouchstart="touchstart(event)"
       ontouchmove="touchmove(event)"
       ontouchend="touchend(event)">
-    <div class="wrapper">
+    <div class="container" >
         <div class="heading">
             <span class="caption">--Snake Game--:></span>
         </div>
@@ -37,7 +37,7 @@
     }
     function touchend(ent){
         if(startingX+100<movingX){
-           swipechange("right");
+            swipechange("right");
         }else if(startingX-100>movingX){
             swipechange("left");
         }
