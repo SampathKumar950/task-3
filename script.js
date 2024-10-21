@@ -10,7 +10,8 @@ let snakeBody = [];
 let velocityX = 0, velocityY = 0;
 let setIntervalId;
 let score = 0;
-
+let incre = 10;
+let curspeed = 125;
 let highScore = localStorage.getItem("high-score") || 0;
 highScoreElement.innerText = `High Score: ${highScore}`;
 const changeFoodPosition = () => {
@@ -60,7 +61,7 @@ function swipechange(direction){
 controls.forEach(key => {
     key.addEventListener("click", ()=> changeDirection({key: key.dataset.key}));
 });
-const initGame = () => {
+const inGame = () => {
     if(gameOver) return handleGameOver();
     let htmlMarkup = `<div class="food" style="grid-area: ${foodY} / ${foodX}"></div>`;
 
@@ -68,7 +69,11 @@ const initGame = () => {
         snakeBody.push([foodX,foodY]);
         changeFoodPosition();
         score++;
-
+        if(score!==0 && score%2===0){
+            curspeed -= incre;
+            clearInterval(setIntervalId);
+            setIntervalId = setInterval(inGame,curspeed);
+        }
         highScore = score >= highScore ? score : highScore;
         localStorage.setItem("high-score",highScore);
         scoreElement.innerText = `Score: ${score}`;
@@ -96,6 +101,6 @@ const initGame = () => {
     playBoard.innerHTML = htmlMarkup;
 }
 changeFoodPosition();
-setIntervalId = setInterval(initGame, 125);
+setIntervalId = setInterval(inGame, curspeed);
 document.addEventListener("keydown", changeDirection);
 
